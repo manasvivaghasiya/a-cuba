@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./view-event.component.scss']
 })
 export class ViewEventComponent implements OnInit {
-
+ 
 EventDataForm:FormGroup;
 
   constructor(
@@ -44,6 +44,7 @@ EventDataForm:FormGroup;
   }
 
   Customizer(){
-    
+
   }
+
 }
