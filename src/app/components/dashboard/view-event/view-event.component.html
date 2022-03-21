@@ -1,0 +1,346 @@
+<div class="content-wrapper animate__animated animated__fadeIn">
+    <div class="form-group breadcrum-right" style="text-align: end;">
+        <button type="button" class="btn-icon btn btn-primary btn-md m-5" routerLink="/dashboard/editEvent/:id">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+        </button>
+    </div>
+ 
+    <div class="card p-2">
+        <div class="row">
+            <div class="col-md-4">
+                <p><b>Title:</b> </p>
+            </div><div class="col-md-8">
+                <p class="ellipse-effect"><b>Discription:</b> </p>
+            </div></div><div class="row">
+                <div class="col">
+                    <p><b>Booking Start Date:</b>
+                         <time datetime="NaN" title="Invalid date">Invalid date</time></p>
+                        </div><div class="col">
+                            <p><b>Event Start Date:</b>
+                                 <time datetime="NaN" title="Invalid date">Invalid date</time>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p><b>Short Address: </b></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p><b>Booking End Date:</b>
+                                    <time datetime="NaN" title="Invalid date">Invalid date</time></p>
+                                </div><div class="col"><p><b>Event End Date:</b> 
+                                    <time datetime="NaN" title="Invalid date">Invalid date</time>
+                                </p>
+                            </div>
+                            <div class="col"><p><b>Base Url:</b>
+                                 <a href="" target="_blank"></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+            <!-- --------event-ticket------------->
+            <div class="card">
+                <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
+                    <h4 class="card-title">Event Tickets</h4>
+                    <div class="d-flex mt-md-0 mt-1">
+                        <button type="button" class="ml-2 btn btn-primary btn-demo" data-toggle="modal" data-target="#myModal2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span class="align-middle ml-50">Add Ticket</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="justify-content-end mx-0 row">
+                    <div class="d-flex align-items-center justify-content-end mt-1 col-sm-12 col-md-4">
+                        <label for="search-input" class="mr-1">Search</label>
+                        <input id="search-input" type="text" class="dataTable-filter mb-50 form-control-sm form-control" value="">
+                    </div>
+                </div>
+                <div class="sc-fznxsB hBxfkO react-dataTable">
+                    <div class="sc-fznWqX fiBTNe">
+                        <div class="sc-AxjAm iazphd rdt_Table" role="table">
+                            <div class="sc-fzqARJ iXaluh">
+                                <div style="padding: 24px;  color: #9b9393;">There are no records to display</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ------event-coupons----------- -->
+            <div class="card">
+                <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
+                    <h4 class="card-title">Event coupon</h4>
+                    <div class="d-flex mt-md-0 mt-1">
+                        <button type="button" class="ml-2 btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span class="align-middle ml-50">Add coupon</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="justify-content-end mx-0 row">
+                    <div class="d-flex align-items-center justify-content-end mt-1 col-sm-12 col-md-4">
+                        <label for="search-input" class="mr-1">Search</label>
+                        <input id="search-input" type="text" class="dataTable-filter mb-50 form-control-sm form-control" value="">
+                    </div>
+                </div>
+                <div class="sc-fznxsB hBxfkO react-dataTable">
+                    <div class="sc-fznWqX fiBTNe">
+                        <div class="sc-AxjAm iazphd rdt_Table" role="table">
+                            <div class="sc-fzqARJ iXaluh">
+                                <div style="padding: 24px; color: #9b9393;">There are no records to display</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ---event-booking-Summary---- -->
+            <div class="card">
+                <div>
+                    <div class="flex-md-row flex-column align-md-items-center align-items-start pb-0 card-header">
+                        <h4 class="card-title">Events Bookings Summary</h4>
+                    </div>
+                </div>
+                <div class="px-0 card-body">
+                            <div>
+                                <p class="text-center" style="color: #9b9393;">There are no records to display</p>
+                            </div>
+                </div>
+            </div>
+
+            <!-- -------event-booking-info------ -->
+            <div class="card">
+                <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
+                    <h4 class="card-title">Events Bookings Info</h4>
+                    <div class="d-flex mt-md-0 mt-1">
+
+                    </div>
+                </div>
+                <div class="justify-content-end mx-0 row">
+                    <div class="d-flex align-items-center justify-content-end mt-1 col-sm-12 col-md-4">
+                        <label for="search-input" class="mr-1">Search</label>
+                        <input id="search-input" type="text" class="dataTable-filter mb-50 form-control-sm form-control" value="">
+                    </div>
+                </div>
+                <div class="sc-fznxsB hBxfkO react-dataTable">
+                    <div class="sc-fznWqX fiBTNe">
+                        <div class="sc-AxjAm iazphd rdt_Table" role="table">
+                            <div class="sc-fzqARJ iXaluh">
+                                <div style="padding: 24px; color: #9b9393;">There are no records to display</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+</div>
+
+<!-- ----------forms--------------- -->
+
+         <!-- --------add-ticket----------- -->
+
+<div class="modal-dialog sidebar-sm" role="document">
+    <div class="modal-content pt-0">
+        <div class="mb-3 modal-header">
+            <div class="modal-title">
+                <h5 class="modal-title">Add Ticket</h5>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <div class="flex-grow-1 modal-body">
+            <form id="add_user" class="" name="EventDataForm" [formGroup]="EventDataForm" (ngSubmit)="onSubmit()" >
+                <div class="form-group">
+                    <label for="title" class="">Title <span style="color: red; font-size: 15px;">*</span></label>
+                    <div class="input-group">
+                        <input id="title" placeholder="Title..." formControlName="title" name="title" type="text" class="form-control" value="">
+                        <!-- <div *ngIf="f.title.invalid && f.title.touched" style="color: red;">
+                            Please Enter Title
+                        </div> -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="">Description</label>
+                    <div class="input-group">
+                        <input id="description" formControlName="description" placeholder="Description..." name="description" type="text" class="form-control" value="">
+                        <!-- <div *ngIf="f.description.invalid && f.description.touched" style="color: red;">
+                            Please Enter description
+                        </div> -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="remark" class="">Remark</label>
+                    <div class="input-group">
+                        <input id="remark" formControlName="remark" placeholder="Remark..." name="remark" type="text" class="form-control" value="">
+                        <!-- <div *ngIf="f.remark.invalid && f.remark.touched" style="color: red;">
+                            Please Enter remark
+                        </div> -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="amount" class="">Amount <span style="color: red; font-size: 15px;">*</span>
+                    </label>
+                    <div class="input-group">
+                        <input id="amount" formControlName="amount" placeholder="Amount..." name="amount" min="0" type="number" class="form-control" value="">
+                        <!-- <div *ngIf="f.amount.invalid && f.amount.touched" style="color: red;">
+                            Please Enter amount
+                        </div> -->
+                    </div>
+                 </div>
+                    <div class="form-group">
+                        <label for="seatingCapacity" class="">Seating Capacity <span style="color: red; font-size: 15px;">*</span></label>
+                        <div class="input-group">
+                            <input id="seatingCapacity" formControlName="seatingCapacity" placeholder="Seating Capacity..." min="0" name="seatingCapacity" type="number" class="form-control" value="">
+                            <!-- <div *ngIf="f.seatingCapacity.invalid && f.seatingCapacity.touched" style="color: red;">
+                                Please Enter seatingCapacity
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="isActive" class="">Is Active</label>
+                        <div class="mb-1 custom-checkbox custom-control">
+                            <input type="checkbox" formControlName="isActive" id="isActive" name="isActive" class="custom-control-input">
+                            <label class="custom-control-label" for="isActive"></label>
+                            <!-- <div *ngIf="f.isActive.invalid && f.isActive.touched" style="color: red;">
+                                Please Enter isActive
+                            </div> -->
+                        </div>
+                    </div>
+                    <button type="button" class="mr-1 btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-outline-secondary">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+   -->
+
+   <!-- ----Add-coupon------- -->
+  <div class="modal-dialog sidebar-sm" role="document">
+      <div class="modal-content pt-0">
+          <div class="mb-3 modal-header">
+              <div class="modal-title">
+                  <h5 class="modal-title">Add Coupon</h5>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </div>
+            <div class="flex-grow-1 modal-body">
+                <form id="coupan" class=""  >
+                    <div class="form-group">
+                        <input type="hidden"  class="form-control" value="">
+                        <label for="couponCode" class="">Coupon Code <span style="color: red; font-size: 15px;">*</span>
+                        </label>
+                        <div class="input-group">
+                            <input id="couponCode" formControlName="couponCode" placeholder="Coupon Code..." name="couponCode" type="text" class="form-control" value="">
+                            <!-- <div *ngIf="f.title.invalid && f.title.touched" style="color: red;">
+                                Please Enter Title
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                                <label for="discountPercentage" class="">Discount (%) <span style="color: red; font-size: 15px;">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <input id="discountPercentage" formControlName="discountPercentage" placeholder="Discount (%)..." min="0" name="discountPercentage" type="number" class="form-control" value="">
+                                    <!-- <div *ngIf="f.discountPercentage.invalid && f.discountPercentage.touched" style="color: red;">
+                                        Please Enter discountPercentage
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="validFrom" class="">Valid From Date <span style="color: red; font-size: 15px;">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                <line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line>
+                                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                            </svg></span>
+                                        </div>
+                                        <!-- <input class="form-control flatpickr-input" id="validFrom" value="" type="text" readonly="readonly"> -->
+                                        <input type="date" formControlName="validFrom" class="form-control flatpickr-input" id="validFrom"
+                                        placeholder="" name="validFrom">
+                                        <!-- <div *ngIf="f.validFrom.invalid && f.validFrom.touched" style="color: red;">
+                                            Please Enter validFrom
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="validTo" class="">Valid To Date <span style="color: red; font-size: 15px;">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                    <line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line>
+                                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                                </svg></span>
+                                                </div>
+                                                <!-- <input class="form-control flatpickr-input" id="validTo" value="" type="text" readonly="readonly"> -->
+                                                <input type="date" class="form-control flatpickr-input" id="validTo" formControlName="validTo"
+                                                placeholder="" name="validTo">
+                                                <!-- <div *ngIf="f.validTo.invalid && f.validTo.touched" style="color: red;">
+                                                    Please Enter validTo
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="minDiscountAmount" class="">Min Booking Amount <span style="color: red; font-size: 15px;">*</span></label>
+                                            <div class="input-group">
+                                                <input id="minDiscountAmount" min="0" formControlName="minDiscountAmount" placeholder="Min Booking Amount.." name="minDiscountAmount" type="number" class="form-control" value="">
+                                                <!-- <div *ngIf="f.minDiscountAmount.invalid && f.minDiscountAmount.touched" style="color: red;">
+                                                    Please Enter minDiscountAmount
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="maxDiscountAmount" class="">Max Discount Amount <span style="color: red; font-size: 15px;">*</span></label>
+                                            <div class="input-group">
+                                                <input id="maxDiscountAmount" formControlName="maxDiscountAmount" min="0" placeholder="Max Discount Amount.." name="maxDiscountAmount" type="number" class="form-control" value="">
+                                                <!-- <div *ngIf="f.maxDiscountAmount.invalid && f.maxDiscountAmount.touched" style="color: red;">
+                                                    Please Enter maxDiscountAmount
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="isValid" class="">Is Valid</label>
+                                            <div class="mb-1 custom-checkbox custom-control">
+                                                <input type="checkbox" formControlName="isValid" id="isValid" name="isValid" class="custom-control-input">
+                                                <label class="custom-control-label" for="isValid"></label>
+                                                <!-- <div *ngIf="f.isValid.invalid && f.isValid.touched" style="color: red;">
+                                                    Please Enter isValid
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <button type="button" class="mr-1 btn btn-primary">Submit</button>
+                                        <button type="button" class="btn btn-outline-secondary">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+<!-- ---------- -->
+
+                        <div class="customizer-links">
+                            <div class="nav flex-column nac-pills" id="c-pills-tab" role="tablist" aria-orientation="vertical">
+                               <a href="javascript:void(0)" class="nav-link" (click)="Customizer()">
+                                  <div class="settings"><i class="icon-paint-bucket"></i></div> 
+                                  <span>Check layouts</span>
+                               </a>    
+                            </div>
+                        </div>         
+                        
+                        

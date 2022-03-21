@@ -1,0 +1,47 @@
+.card {
+    border: none;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 /10%);
+}
+
+.card .card-header {
+    padding: 16px;
+}
+
+.card .card-boady {
+    padding: 10px;
+}
+
+.card .card-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.breadcrumb1 {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    // background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+input {
+    color: #c7c7c7;
+}
+
+label {
+    color: #b3afaf;
+}
+
+h4 {
+    color: #7a7a7a;
+    font-weight: 50px;
+    font-size: 20px;
+}
+
+.form-control{
+    color: #6e6b7b;
+}

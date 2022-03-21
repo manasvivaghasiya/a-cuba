@@ -1,0 +1,108 @@
+
+      <app-breadcrumb></app-breadcrumb>
+<!-- Container-fluid starts -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body custom-datatable">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Events</h5>
+                        </div>
+                        <div class="col-md-2 pb-3">
+                            <div>
+                                <div class="d-flex mt-md-0 mt-1">
+                                    <button type="button" class="ml-2 btn btn-primary" >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+                                        stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                        <span class="align-middle ml-50" routerLink="/dashboard/CreateEvents">Add Event</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ngx-datatable class="bootstrap" [rows]="Events" [columns]="columns" 
+                        [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
+                        [limit]="10">
+                        <ng-container *ngFor="let column of columns">
+                            <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'title'">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    {{ row[column.prop] }}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'baseUrl'">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    {{ row[column.prop] }}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'bookingStartDateTime'">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <!-- {{ todayDate | date }} -->
+                                    {{ row[column.prop] | date:'dd.MM.yyyy' }}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'bookingEndDateTime'">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    {{ row[column.prop] | date:'dd.MM.yyyy' }}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'eventFrom'">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    {{ row[column.prop] | date:'dd.MM.yyyy'}}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'eventTo'">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    {{ row[column.prop] | date:'dd.MM.yyyy'}}
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'isActive'">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    {{ row[column.prop] }}
+                                </ng-template>
+                            </ngx-datatable-column>
+
+                            <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'action'">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    {{ row[column.prop] }}
+                                <i class="fa fa-eye mr-2" routerLink="/dashboard/viewEvent"></i>
+                                <i class="fa fa-edit mr-2"  (click)="editEvent(row.id)"></i>
+                                <i class="fa fa-trash" (click)="deleteEvent(row.id)" ></i>
+                                </ng-template>
+                            </ngx-datatable-column>
+                    
+                        </ng-container>
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                <!-- <div class="card-header">
+                    <h5>Events</h5>
+                    <div>
+                        <div class="d-flex mt-md-0 mt-1">
+                            <button type="button" class="ml-2 btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+                                stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                <span class="align-middle ml-50" routerLink="/dashboard/CreateEvents">Add Event</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="justify-content-end mx-0 row">
+                    <div class="d-flex align-items-center justify-content-end mt-1 col-sm-12 col-md-4">
+                        <label for="search-input" class="mr-1 mt-2" style="color:#b1b1b1;">Search</label>
+                    <input id="search-input" type="text" class="dataTable-filter mb-50 form-control-sm form-control" value="">
+                </div> -->
+                <!-- <div class="card-body custom-datatable">
+                    <ngx-datatable class="bootstrap" [rows]="Events"
+                        [columns]="[{name:'Title'},{name:'Base Url'},{name:'Booking Start Date Time '},{name:'Booking End Date Time'},{name:'Event From'},{name:'Event To'},{name:'Is Active'},{name:'Actions'}]"
+                         [columnMode]="'force'"   [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10">
+                    </ngx-datatable>
+                </div> -->
+                <!-- --------------------- -->
+
+<!-- Container-fluid Ends -->

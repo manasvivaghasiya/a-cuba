@@ -1,0 +1,32 @@
+*{
+    box-sizing: border-box;
+}
+
+div{
+    display: block;
+}
+.card .card-header {
+    border-bottom: none;
+    padding: 1.5rem;
+    background-color: transparent;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.my-md-0 {
+    margin-top: 0!important;
+}
+
+.row{
+    display:flex;
+    flex-wrap: wrap;
+}
+.bootstrap{
+    background-color: #f9fcff;
+}
+
+h5 {
+    color: #7a7a7a;
+    font-weight: 100;
+}

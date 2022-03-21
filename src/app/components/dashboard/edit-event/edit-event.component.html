@@ -1,0 +1,317 @@
+<!-- <div class="content-wrapper">
+    <div class="content-header row"> 
+        <div class="content-header-left">
+           <div class="row breadcrumb-top">
+                 <div class="col-12">
+                  <h2 class="content-header-title float-left mb-0">Events</h2>
+                  <div class="breadcrumb-wrapper vs-breadcrumbs d-sm-block d-none col-12">
+                      <nav class="" aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                              <li class="breadcrumb-item">
+                              <a href="/">Home</a></li>
+                              <li class="text-primary breadcrumb-item">Events</li>
+                              <li class="active breadcrumb-item" aria-current="page">Create Event</li>
+                            </ol>
+                        </nav>
+                     </div>
+                 </div>
+           </div>
+        </div>
+    </div>
+</div>
+ -->
+
+<!-- <app-breadcrumb [title]="'Crate Events'" [items]="['Home', 'Events','Create Events']" ></app-breadcrumb> -->
+<!-- -----form------------- -->
+
+
+<div class="content-header row pt-4">
+    <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <h2 class="content-header-title float-left mb-0" style="font-weight:100;  color:#7a7a7a;">Events</h2>
+                <div class="breadcrumb-wrapper vs-breadcrumbs d-sm-block d-none col-12">
+                    <nav class="" aria-label="breadcrumb">
+                        <ol class="breadcrumb1">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="text-primary breadcrumb-item">Events</li>
+                            <li class="active breadcrumb-item" aria-current="page">Create Event</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+        <div class="form-group breadcrum-right">
+            <button type="button" class="btn-icon btn-round dropdown-toggle btn btn-primary btn-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- ------form----------- -->
+<div class="col-sm-12">
+    <form action="">
+
+          <!-- ----------Basic-Event-Info---------------- -->
+
+          <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Basic Events Info</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Title <span style="color: red;">*</span></label>
+                            <input id="title" name="title" placeholder="Enter event title" type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Description</label>
+                            <input id="description" name="description" placeholder="Enter event description" type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Base Url</label>
+                            <input id="baseUrl" name="baseUrl" placeholder="Enter event base url" type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label for="bookingStartDate" class="">Booking Start Date <span style="color: red; font-size: 15px;">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </span>
+                                </div>
+                                <input type="text" id="bookingStartDateTime" placeholder="YYYY-MM-DD" name="bookingStartDateTime" class="form-control flatpickr-input" value="" readonly="readonly"></div>
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label for="bookingEndDate" class="">Booking End Date <span style="color: red; font-size: 15px;">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </span>
+                                </div>
+                                <input type="text" id="bookingEndDateTime" placeholder="YYYY-MM-DD" name="bookingEndDateTime" class="form-control flatpickr-input" value="" readonly="readonly"></div>
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label for="Event From" class="">Event Start Date <span style="color: red; font-size: 15px;">*</span>
+            </label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    </span>
+                                </div>
+                                <input type="text" id="eventFrom" placeholder="YYYY-MM-DD" name="eventFrom" class="form-control flatpickr-input" value="" readonly="readonly"></div>
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group">
+                            <label for="Event From" class="">Event End Date <span style="color: red; font-size: 15px;">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                                </div>
+                                <input type="text" id="eventFrom" placeholder="YYYY-MM-DD" name="eventTo" class="form-control flatpickr-input" value="" readonly="readonly"></div>
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Short Address</label><input id="shortAddress" name="shortAddress" placeholder="Enter short address" type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group">
+                            <label class="">Full Address</label>
+                            <div>
+                                <input placeholder="Enter full address" class="form-control search react-mapbox-ac-input" type="text" value=""><span>
+                                        <div class="react-mapbox-ac-menu" style="display: none;">
+                                        </div>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div mt="5" class="mb-0 form-group"><label for="blog-edit-status" class="">Paypal</label><select id="paypalMode" name="paypalMode" class="form-control"><option>Select...</option>
+                    <option value="sandbox">SandBox</option>
+                    <option value="live">Live</option>
+                </select>
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Client Id</label><input id="paypalClientId" name="paypalClientId" placeholder="Enter paypalClientId" type="text" class="form-control" value=""></div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group">
+                            <label class="">Client Key</label>
+                            <input id="paypalClientSecret" name="paypalClientSecret" placeholder="Enter paypalClientSecret" type="text" class="form-control" value=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- --------------Event-Image------------ -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Event Images</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Top Image</label>
+                            <div class="custom-file">
+                                <input type="file" id="topImage" name="topImage" class="custom-file-input">
+                                <label class="custom-file-label" for="topImage">Choose file</label>
+                            </div>
+                            <img>
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Landing Image</label>
+                            <div class="custom-file">
+                                <input type="file" id="landingImage" name="landingImage" class="custom-file-input">
+                                <label class="custom-file-label" for="landingImage">Choose file</label>
+                            </div>
+                            <img>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- -----------Banner-Image------- -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Banner Images</h4><button type="button" class="waves-effect mr-1 btn btn-primary">Add Banner Images</button></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Banner Image 1</label>
+                            <div class="d-flex custom-file-with-group">
+                                <div class="custom-file">
+                                    <input type="file" id="0" class="custom-file-input">
+                                    <label class="custom-file-label" for="0">Choose file</label>
+                                </div>
+                                <button type="button" class="waves-effect btn btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <img>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------oraganizer details------ -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Organizer Details</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Organized By</label>
+                            <input id="organizedBy" name="organizedBy" placeholder="Event organized by" type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group">
+                            <label class="">Organizer Website Url</label>
+                            <input id="organizerWebsiteUrl" name="organizerWebsiteUrl" placeholder="Event organizer website url" type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Remark</label>
+                            <input id="remark" name="remark" placeholder="Event remark..." type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- -----Support-details--- -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Support Details</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Support Email</label>
+                            <input id="supportEmail" name="supportEmail" placeholder="Event support email" type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label class="">Support Contact Number</label>
+                            <input id="supportContactNumber" name="supportContactNumber" placeholder="Event support contact email" type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group"><label for="isActive" class="">Is Active</label>
+                            <div class="mb-1 custom-checkbox custom-control">
+                                <input type="checkbox" id="isActive" name="isActive" class="custom-control-input" checked="">
+                                <label class="custom-control-label" for="isActive"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- -----Theme-color----------->
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Theme Colors</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="mb-2 col-sm-12 col-md-6 col-xl-4">
+                        <div class="themeColorCss row" style="padding-left: 15px;">Primary colors</div>
+                        <div class="row" style="padding-left: 15px;">
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(44, 62, 80), rgb(52, 152, 219));"></div>
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(168, 192, 255), rgb(63, 43, 150));"></div>
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(16, 141, 199), rgb(239, 142, 56));"></div>
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(86, 204, 242), rgb(47, 128, 237));"></div>
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(41, 128, 185), rgb(44, 62, 80));"></div>
+                        </div>
+                    </div>
+                    <div class="mb-2 col-sm-12 col-md-6 col-xl-4">
+                        <div class="themeColorCss row" style="padding-left: 15px;">Secondary colors</div>
+                        <div class="row" style="padding-left: 15px;">
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(49, 71, 85), rgb(38, 160, 218));"></div>
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(63, 43, 150), rgb(168, 192, 255));"></div>
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(239, 142, 56), rgb(16, 141, 199));"></div>
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(47, 128, 237), rgb(86, 204, 242));"></div>
+                            <div class="colorBox" style="background: linear-gradient(to right, rgb(44, 62, 80), rgb(41, 128, 185));"></div>
+                        </div>
+                    </div>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
+                        <div mt="5" class="mb-0 form-group"><label for="blog-edit-status" class="">Font Color</label>
+                            <select id="fontColor" name="fontColor" class="form-control">
+                                <option>Font Color...</option>
+                                <option value="gridient-font-color">White</option>
+                                <option value="gridient-font-color-dark">Black</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- -------Save Event Data btn----- -->
+        <div class="col-md-12 text-center pb-4">
+            <button type="submit" class="waves-effect mr-1 btn btn-primary" routerLink="/dashboard/eventList">Update Event Data</button>
+        </div>
+
+
+    </form>
+</div>
