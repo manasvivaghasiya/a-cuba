@@ -290,18 +290,19 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Banner Images</h4>
-                <button type="button" class="waves-effect mr-1 btn btn-primary">Add Banner Images</button>
+                <button type="button" class="waves-effect mr-1 btn btn-primary" (click)="addFile()">Add Banner Images</button>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4">
-                        <div class="form-group"><label class="">Banner Image 1</label>
+                    <div class="mb-1 col-sm-12 col-md-6 col-xl-4" *ngFor="let obj of dataArray; let i=index">
+                        <div class="form-group">
+                            <label class="">Banner Image </label>
                             <div class="d-flex custom-file-with-group">
                                 <div class="custom-file">
-                                    <input type="file" id="0" formControlName="0" class="custom-file-input">
+                                    <input type="file" id="0" formControlName="0" class="custom-file-input" name="bannerImage{{i}}" [(ngModel)]="obj.bannerImage">
                                     <label class="custom-file-label" for="0">Choose file</label>
                                 </div>
-                                <button type="button" class="waves-effect btn btn-primary">
+                                <button type="button" class="waves-effect btn btn-primary" (click)="removeFile(i)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round">
@@ -446,3 +447,5 @@
         </div>
     </form>
 </div>
+
+

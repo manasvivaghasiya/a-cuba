@@ -17,19 +17,15 @@ label{
 }
 
 // ---add-ticket------
-.modal.right .modal-dialog {
+.modal-dialog {
     position: fixed;
     margin: auto;
     width: 320px;
     height: 100%;
-    -webkit-transform: translate3d(0%, 0, 0);
-        -ms-transform: translate3d(0%, 0, 0);
-         -o-transform: translate3d(0%, 0, 0);
-            transform: translate3d(0%, 0, 0);
+    right: 0px;
 }
-.modal.right .modal-content {
+.modal-content {
     height: 100%;
-    overflow-y: auto;
 }
 
 

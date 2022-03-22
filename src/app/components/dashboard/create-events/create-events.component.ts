@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 })
 export class CreateEventsComponent implements OnInit {
 
+  banner = new banner()
+  dataArray=[];
   EventDataForm: FormGroup;
   Events: any;
   Event: any;
@@ -34,6 +36,8 @@ export class CreateEventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+this.dataArray.push(this.banner);
+
     this.EventDataForm = this.fb.group({
       baseUrl: [''],
       email: [''],
@@ -64,6 +68,15 @@ export class CreateEventsComponent implements OnInit {
     })
 
   }
+
+addFile(){
+  this.banner=new banner()
+  this.dataArray.push(this.banner);
+}
+
+removeFile(index){
+   this.dataArray.splice(index);
+}
 
   onSubmit() {
     let _obj = JSON.parse(JSON.stringify(this.EventDataForm.value)) as any;
@@ -162,4 +175,9 @@ export class CreateEventsComponent implements OnInit {
       });
   }
 
+}
+
+
+export class banner{
+       bannerImage:any;
 }
