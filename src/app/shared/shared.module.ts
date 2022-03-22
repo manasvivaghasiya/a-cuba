@@ -72,7 +72,7 @@ import { NavService } from './services/nav.service';
   providers: [
     NavService,
     ChatService,
-    LayoutService
+    LayoutService,
   ],
   exports: [
     NgbModule,

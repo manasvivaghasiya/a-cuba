@@ -15,7 +15,16 @@ export class LayoutService {
     color: {
       primary_color: '#7366ff', 
       secondary_color: '#f73164'
-    }
+    },
+
+    Event:{
+      layout_type: 'ltr',
+      layout_version: 'light-only',
+      sidebar_type: 'default-sidebar'
+    },
+    
+
+
   }
 
   constructor() { 

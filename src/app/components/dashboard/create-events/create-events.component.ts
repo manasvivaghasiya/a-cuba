@@ -36,7 +36,7 @@ export class CreateEventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-this.dataArray.push(this.banner);
+     this.dataArray.push(this.banner);
 
     this.EventDataForm = this.fb.group({
       baseUrl: [''],
