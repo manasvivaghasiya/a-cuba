@@ -8,17 +8,22 @@
         </button>
     </div>
  
-    <div class="card p-2">
+    <div class="card p-2" >
         <div class="row">
             <div class="col-md-4">
-                <p><b>Title:</b> </p>
-            </div><div class="col-md-8">
+                <p ><b>Title:</b> </p>
+            </div>
+            <div class="col-md-8">
                 <p class="ellipse-effect"><b>Discription:</b> </p>
-            </div></div><div class="row">
+            </div>
+        </div>
+        <div class="row">
                 <div class="col">
-                    <p><b>Booking Start Date:</b>
-                         <time datetime="NaN" title="Invalid date">Invalid date</time></p>
-                        </div><div class="col">
+                    <p><b  >Booking Start Date:</b>
+                         <time datetime="NaN" title="Invalid date">Invalid date</time>
+                        </p>
+                 </div>
+                    <div class="col">
                             <p><b>Event Start Date:</b>
                                  <time datetime="NaN" title="Invalid date">Invalid date</time>
                                 </p>
@@ -76,7 +81,7 @@
                             </svg>
                         </div>
                         <div class="flex-grow-1 modal-body">
-                            <form id="add_user" class="" [formGroup]="EventDataForm" (ngSubmit)="onSubmit()">
+                            <form id="add_user" class="" [formGroup]="ticketForm" (ngSubmit)="ticketSubmit()">
                                 <div class="form-group">
                                     <label for="title" class="">Title <span style="color: red; font-size: 15px;">*</span></label>
                                     <div class="input-group">
@@ -114,7 +119,7 @@
                                         <label class="custom-control-label" for="isActive"></label>
                                     </div>
                                 </div>
-                                <button type="button" class="mr-1 btn btn-primary">Submit</button>
+                                <button type="button" class="mr-1 btn btn-primary" (click)="submitTicket(id)">Submit</button>
                                 <button type="button" class="btn btn-outline-secondary">Cancel</button>
                             </form>
             
@@ -138,7 +143,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <ngx-datatable class="bootstrap" [rows]="Events" [columns]="columns" 
+                                    <ngx-datatable class="bootstrap" [rows]="Ticket" [columns]="columns" 
                                         [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
                                         [limit]="5">
                                         <ng-container *ngFor="let column of columns">
@@ -233,7 +238,7 @@
                                </svg>
                           </div>
                          <div class="flex-grow-1 modal-body">
-                             <form id="coupan" class="" [formGroup]="couponForm" (ngSubmit)="submit()">
+                             <form id="coupan" class="" [formGroup]="couponForm" (ngSubmit)="couponSubmit()">
                                  <div class="form-group">
                                      <input type="hidden" class="form-control" value="">
                                      <label for="couponCode" class="">Coupon Code <span style="color: red; font-size: 15px;">*</span>
@@ -298,7 +303,7 @@
                                              <label class="custom-control-label" for="isValid"></label>
                                          </div>
                                      </div>
-                                     <button type="button" class="mr-1 btn btn-primary" (click)="addCoupon(row.id)">Submit</button>
+                                     <button type="button" class="mr-1 btn btn-primary" (click)="addCoupon()">Submit</button>
                                      <button type="button" class="btn btn-outline-secondary">Cancel</button>
                                  </form>
                              </div>

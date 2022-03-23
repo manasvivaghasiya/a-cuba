@@ -1,7 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { id } from '@swimlane/ngx-datatable';
 import { LayoutService } from 'src/app/shared/services/layout.service';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -11,15 +15,19 @@ import { LayoutService } from 'src/app/shared/services/layout.service';
   styleUrls: ['./view-event.component.scss']
 })
 export class ViewEventComponent implements OnInit {
-  public Events:any=[];
+  public Events: any = [];
+  public id: string;
   // couponData = new couponData()
   // dataArray=[];
- 
-EventDataForm:FormGroup;
-couponForm:FormGroup;
-coupon:any;
-
-row: any;
+  view = new view()
+  Event :any
+  Ticket:any;
+  requestID:any;
+  ticketForm: FormGroup;
+  couponForm: FormGroup;
+  coupon: any;
+  requestId: any;
+  row: any;
   prop = [];
 
   columns = [
@@ -47,61 +55,88 @@ row: any;
   ]
 
 
- 
+
   constructor(
-    private fb:FormBuilder,
-  
-    // public layout:LayoutService
-    ) { }
+    private fb: FormBuilder,
+    private routes: ActivatedRoute,
+    private http:HttpClient
+  ) 
+  {
+    this.requestId = this.routes.snapshot.paramMap.get('id');
+    if (this.requestId) {
+      this.getData(this.requestId);
+    }
+  }
+
   get f() {
-    return this.EventDataForm.controls;
+    return this.ticketForm.controls;
+  }
+
+  getData(requestId){
+    debugger
+    this.http.get(`${environment.api}/events/${requestId}`)
+    .subscribe((res: any) => {
+      this.Event = res;
+    })
+         
   }
 
 
-
   ngOnInit(): void {
-    this.getData()
+    this.getTicket;
+    
+    // this.getCoupon()
     // this.dataArray.push(this.couponData);
-    this.EventDataForm = this.fb.group({
+    this.ticketForm = this.fb.group({
       title: [''],
       description: [''],
       remark: [''],
       amount: [''],
       seatingCapacity: [''],
       isActive: [''],
-      
-    }
-    )
+
+    });
+
+    this.couponForm = this.fb.group({
+      couponCode:[''],
+      discountPercentage:[''],
+      validFrom:[''],
+      validTo:[''],
+      minDiscountAmount:[''],
+      maxDiscountAmount:[''],
+      isValid:['']
+    })
   }
 
-  // addCoupon(){
-  //   this.couponData = new couponData()
-  //   this.dataArray.push(this.couponData);
-  // }
+  
 
-  onSubmit(){
-    
+  ticketSubmit() {
+
   }
-  submit(){
+  couponSubmit() {
 
   }
 
-getData(){
-  return this.Events;
-}
+  
+  addCoupon(){
 
-getDataId(id:number){
-  return this.Events.find((x: {id:number})=>x.id== id)
-}
+  }
+  // ------------------ticket-----------
 
-addCoupon(id:any){
-  debugger
-  this.Events.push(
-    this.couponForm.value,
-    id,this.Events.length + 1
-  )
-}
+ getTicket(id:string){
+  this.http.get(`${environment.api}/events/${id}/EventTicket`).subscribe((res:any)=>{
+    this.Ticket =res;
+  });
+     
+ }
 
+ submitTicket(id:string){
+   debugger
+   this.http.patch(`${environment.api}/events/${id}/EventTicket`,this.Ticket).subscribe((res:any)=>{
+     alert('data successfully add');
+    this.getTicket(id);
+   })
+ }
 
 }
 
@@ -110,10 +145,21 @@ addCoupon(id:any){
 //   discountPercentage:string;
 //   validFrom:string;
 //   validTo:string;
+//   validTolist:[];
 //   minDiscountAmount:string;
 //   maxDiscountAmount:string;
 //   isValid:string;
 //   action:any;
 // }
 
+  export class view{
+    title:any;
+    descritption:any;
+    bookingStartDateTime:any;
+    bookingEndDateTime:any;
+    eventFrom:any;
+    eventTo:any;
+    shortAddress:any;
+    baseUrl:any;
+  }
 

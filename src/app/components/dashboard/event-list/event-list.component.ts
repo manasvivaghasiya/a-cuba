@@ -71,13 +71,12 @@ export class EventListComponent implements OnInit {
   }
 
   editEvent(id) {
-    debugger
+   
     this.router.navigate(['dashboard/editEvent/' + id]);
   }
 
   viewEvent(id){
- 
-    this.router.navigate(['/dashboard/viewEvent/' + id])
+        this.router.navigate(['/dashboard/viewEvent/' + id]);
   }
   // saveEvent(){
   //   this.http.post(`${environment.api}/api/events`,this.Events)
