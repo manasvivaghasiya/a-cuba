@@ -11,12 +11,13 @@ import { LayoutService } from 'src/app/shared/services/layout.service';
   styleUrls: ['./view-event.component.scss']
 })
 export class ViewEventComponent implements OnInit {
-  public Events = [];
-  couponData = new couponData()
-  dataArray=[];
-
+  public Events:any=[];
+  // couponData = new couponData()
+  // dataArray=[];
+ 
 EventDataForm:FormGroup;
 couponForm:FormGroup;
+coupon:any;
 
 row: any;
   prop = [];
@@ -32,7 +33,7 @@ row: any;
     { name: 'Action', prop: 'action' }
   ]
 
-  coupon = [
+  coupons = [
     { name: 'Coupon Code', prop: 'couponCode' },
     { name: 'Discount', prop: 'discountPercentage' },
     { name: 'Valid Form', prop: 'validFrom' },
@@ -59,7 +60,8 @@ row: any;
 
 
   ngOnInit(): void {
-    this.dataArray.push(this.couponData);
+    this.getData()
+    // this.dataArray.push(this.couponData);
     this.EventDataForm = this.fb.group({
       title: [''],
       description: [''],
@@ -72,32 +74,46 @@ row: any;
     )
   }
 
-  addCoupon(){
-    this.couponData = new couponData()
-    this.dataArray.push(this.couponData);
-  }
+  // addCoupon(){
+  //   this.couponData = new couponData()
+  //   this.dataArray.push(this.couponData);
+  // }
 
   onSubmit(){
-
+    
   }
   submit(){
 
   }
 
+getData(){
+  return this.Events;
+}
 
+getDataId(id:number){
+  return this.Events.find((x: {id:number})=>x.id== id)
+}
+
+addCoupon(id:any){
+  debugger
+  this.Events.push(
+    this.couponForm.value,
+    id,this.Events.length + 1
+  )
+}
 
 
 }
 
-export class couponData{
-  couponCode:string;
-  discountPercentage:string;
-  validFrom:string;
-  validTo:string;
-  minDiscountAmount:string;
-  maxDiscountAmount:string;
-  isValid:string;
-  action:any;
-}
+// export class couponData{
+//   couponCode:string;
+//   discountPercentage:string;
+//   validFrom:string;
+//   validTo:string;
+//   minDiscountAmount:string;
+//   maxDiscountAmount:string;
+//   isValid:string;
+//   action:any;
+// }
 
 

@@ -33,7 +33,7 @@ const routes: Routes = [
         component:CreateEventsComponent
       },
       {
-        path:'viewEvent/:id',
+        path:'viewEvent',
         component:ViewEventComponent
       }
     ],
