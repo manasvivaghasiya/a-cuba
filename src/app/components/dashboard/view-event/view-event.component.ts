@@ -30,10 +30,12 @@ export class ViewEventComponent implements OnInit {
   requestId: any;
   row: any;
   prop = [];
+  public customizer: string = '';
   
 
   ticket=[
     new Title(this.view)
+    
 
   
   ];
@@ -74,6 +76,7 @@ export class ViewEventComponent implements OnInit {
     this.requestId = this.routes.snapshot.paramMap.get('id');
     if (this.requestId) {
       this.getData(this.requestId);
+    
     }
   }
 
@@ -85,7 +88,7 @@ export class ViewEventComponent implements OnInit {
     debugger
     this.http.get(`${environment.api}/events/${requestId}`)
     .subscribe((res: any) => {
-      this.Event = res;
+      this.view = res;
     })
          
   }
@@ -133,8 +136,11 @@ export class ViewEventComponent implements OnInit {
   // ------------------ticket-----------
 
  getTicket(id:string){
+  // this.getData;
+
   this.http.get(`${environment.api}/events/${id}/EventTicket`).subscribe((res:any)=>{
     this.Ticket =res;
+    this.getData;
   });
      
  }
@@ -147,8 +153,11 @@ export class ViewEventComponent implements OnInit {
    })
  }
 
-}
+ Customizer(val) {
+  this.customizer = val;
 
+}
+}
 // export class couponData{
 //   couponCode:string;
 //   discountPercentage:string;
@@ -163,7 +172,7 @@ export class ViewEventComponent implements OnInit {
 
   export class view{
     title:string;
-    descritption:string;
+    description:string;
     bookingStartDateTime:string;
     bookingEndDateTime:string;
     eventFrom:string;

@@ -17,41 +17,26 @@ label{
 }
 
 // ---add-ticket------
-// .modal-dialog {
-//     position: fixed;
-//     margin: auto;
-//     width: 320px;
-//     height: 100%;
-//     right: 0px;
-// }
-// .modal-content {
-//     height: 100%;
-// }
 
 
-// .modal.right .modal-body {
-//     padding: 15px 15px 80px;
-// }
-// .modal.right.fade .modal-dialog {
-//     right: -320px;
-//     -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-//        -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-//          -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-//             transition: opacity 0.3s linear, right 0.3s ease-out;
-// }
 
-// .modal.right.fade.in .modal-dialog {
-//     right: 0;
-// }
-// .modal-content {
-//     border-radius: 0;
-//     border: none;
-// }
+// customizer-contain
+// tab-content
+// customizer-header
+// icofont-close icon-close
 
-// .modal-header {
-//     border-bottom-color: #EEEEEE;
-//     background-color: #FAFAFA;
-// }
-// body {
-// 	background-color: #78909C;
-// }
+
+// .coupon-contain {
+//     right: unset;
+//     left: -335px;
+//     &.open {
+//       right: unset;
+//       left: 0px;
+//     }
+//     .customizer-header {
+//       .icon-close {
+//         left: unset;
+//         right: 30px;
+//       }
+//     }
+//   }

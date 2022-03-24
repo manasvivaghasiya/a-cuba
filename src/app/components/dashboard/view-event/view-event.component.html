@@ -9,7 +9,7 @@
     </div>
  
     <div class="card p-2" >
-        <div class="row" *ngFor="let view of ticket">
+        <div class="row">
             <div class="col-md-4">
                 <p ><b>Title: {{view.title}}</b> </p>
             </div>
@@ -19,13 +19,13 @@
         </div>
         <div class="row">
                 <div class="col">
-                    <p><b  >Booking Start Date:{{view.bookingStartDateTime}}</b>
-                         <time datetime="NaN" title="Invalid date">Invalid date:</time>
+                    <p><b  >Booking Start Date:{{view.bookingStartDateTime |  date:'dd.MM.yyyy'}}</b>
+                         <!-- <time datetime="NaN" title="Invalid date">Invalid date:</time> -->
                         </p>
                  </div>
                     <div class="col">
-                            <p><b>Event Start Date:{{view.eventFrom}}</b>
-                                 <time datetime="NaN" title="Invalid date">Invalid date</time>
+                            <p><b>Event Start Date:{{view.eventFrom |  date:'dd.MM.yyyy'}}</b>
+                                 <!-- <time datetime="NaN" title="Invalid date">Invalid date</time> -->
                                 </p>
                             </div>
                             <div class="col">
@@ -34,12 +34,12 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p><b>Booking End Date:{{view.bookingEndDateTime}}</b>
-                                    <time datetime="NaN" title="Invalid date">Invalid date</time></p>
+                                <p><b>Booking End Date:{{view.bookingEndDateTime |  date:'dd.MM.yyyy'}}</b>
+                                    <!-- <time datetime="NaN" title="Invalid date">Invalid date</time></p> -->
                                 </div>
                                 <div class="col">
-                                    <p><b>Event End Date:{{view.eventTo}}</b> 
-                                    <time datetime="NaN" title="Invalid date">Invalid date</time>
+                                    <p><b>Event End Date:{{view.eventTo |  date:'dd.MM.yyyy'}}</b> 
+                                    <!-- <time datetime="NaN" title="Invalid date">Invalid date</time> -->
                                 </p>
                             </div>
                             <div class="col"><p><b>Base Url:{{view.baseUrl}}</b>
@@ -53,8 +53,8 @@
             <div class="card">
                 <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
                     <h4 class="card-title">Event Tickets</h4>
-                    <div class="d-flex mt-md-0 mt-1"  class="nav-link">
-                        <button type="button" class="ml-2 btn btn-primary  " >
+                    <div class="d-flex mt-md-0 mt-1"  class="nav-link" class="nav " id="c-pills-tab" >
+                        <button type="button" class="ml-2 btn btn-primary "  href="javascript:void(0)"(click)="Customizer('layout')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -71,61 +71,65 @@
                     
                 </div>
                 <!-- --------ticket-form-------- -->
-                <div class="modal-dialog sidebar-sm" role="document">
+                <div class="modal-dialog sidebar-sm" role="document"  class="customizer-contain" [ngClass]="{'open' : customizer != '' }">
                     <div class="modal-content pt-0">
-                        <div class="mb-3 modal-header">
-                            <div class="modal-title">
+                        <div class="mb-3 modal-header tab-content " id="c-pills-tabContent">
+                            <div class="modal-title customizer-header">
+                                <i class="icofont-close icon-close" (click)="Customizer('')"></i>
                                 <h5 class="modal-title">Add Ticket</h5>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
+                            </svg> -->
                         </div>
-                        <div class="flex-grow-1 modal-body">
-                            <form id="add_user" class="" [formGroup]="ticketForm" (ngSubmit)="ticketSubmit()">
-                                <div class="form-group">
-                                    <label for="title" class="">Title <span style="color: red; font-size: 15px;">*</span></label>
-                                    <div class="input-group">
-                                        <input id="title" formControlName="title"  placeholder="Title..." name="title" type="text" class="form-control" value="">
+                        <div [ngClass]="{'active show': customizer == 'layout' }" id="c-pills-layouts">
+                            <div class="flex-grow-1 modal-body">
+                                <form id="add_user" class="" [formGroup]="ticketForm" (ngSubmit)="ticketSubmit()">
+                                    <div class="form-group">
+                                        <label for="title" class="">Title <span style="color: red; font-size: 15px;">*</span></label>
+                                        <div class="input-group">
+                                            <input id="title" formControlName="title"  placeholder="Title..." name="title" type="text" class="form-control" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="description" class="">Description</label>
-                                    <div class="input-group">
-                                        <input id="description" formControlName="description" placeholder="Description..." name="description" type="text" class="form-control" value="">
+                                    <div class="form-group">
+                                        <label for="description" class="">Description</label>
+                                        <div class="input-group">
+                                            <input id="description" formControlName="description" placeholder="Description..." name="description" type="text" class="form-control" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="remark" class="">Remark</label>
-                                    <div class="input-group">
-                                        <input id="remark"   formControlName="remark" placeholder="Remark..." name="remark" type="text" class="form-control" value="">
+                                    <div class="form-group">
+                                        <label for="remark" class="">Remark</label>
+                                        <div class="input-group">
+                                            <input id="remark"   formControlName="remark" placeholder="Remark..." name="remark" type="text" class="form-control" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="amount" class="">Amount <span style="color: red; font-size: 15px;">*</span></label>
-                                    <div class="input-group">
-                                        <input id="amount"   formControlName="amount" placeholder="Amount..." name="amount" min="0" type="number" class="form-control" value="">
+                                    <div class="form-group">
+                                        <label for="amount" class="">Amount <span style="color: red; font-size: 15px;">*</span></label>
+                                        <div class="input-group">
+                                            <input id="amount"   formControlName="amount" placeholder="Amount..." name="amount" min="0" type="number" class="form-control" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="seatingCapacity" class="">Seating Capacity <span style="color: red; font-size: 15px;">*</span></label>
-                                    <div class="input-group">
-                                        <input id="seatingCapacity"  formControlName="seatingCapacity" placeholder="Seating Capacity..." min="0" name="seatingCapacity" type="number" class="form-control" value="">
+                                    <div class="form-group">
+                                        <label for="seatingCapacity" class="">Seating Capacity <span style="color: red; font-size: 15px;">*</span></label>
+                                        <div class="input-group">
+                                            <input id="seatingCapacity"  formControlName="seatingCapacity" placeholder="Seating Capacity..." min="0" name="seatingCapacity" type="number" class="form-control" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="isActive" class="">Is Active</label>
-                                    <div class="mb-1 custom-checkbox custom-control">
-                                        <input type="checkbox"  formControlName="isActive"  id="isActive" name="isActive" class="custom-control-input">
-                                        <label class="custom-control-label" for="isActive"></label>
+                                    <div class="form-group">
+                                        <label for="isActive" class="">Is Active</label>
+                                        <div class="mb-1 custom-checkbox custom-control">
+                                            <input type="checkbox"  formControlName="isActive"  id="isActive" name="isActive" class="custom-control-input">
+                                            <label class="custom-control-label" for="isActive"></label>
+                                        </div>
                                     </div>
-                                </div>
-                                <button type="button" class="mr-1 btn btn-primary" (click)="submitTicket(id)">Submit</button>
-                                <button type="button" class="btn btn-outline-secondary">Cancel</button>
-                            </form>
-            
+                                    <button type="button" class="mr-1 btn btn-primary" (click)="submitTicket(id)">Submit</button>
+                                    <button type="button" class="btn btn-outline-secondary">Cancel</button>
+                                </form>
+                
+                            </div>
                         </div>
+                        
                     </div>
                 </div> 
                           
@@ -211,8 +215,8 @@
             <div class="card">
                 <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
                     <h4 class="card-title">Event coupon</h4>
-                    <div class="d-flex mt-md-0 mt-1">
-                        <button type="button" class="ml-2 btn btn-primary" >
+                    <div class="d-flex mt-md-0 mt-1 nav flex-column nac-pills">
+                        <button type="button" class="ml-2 btn btn-primary"  >
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -228,16 +232,16 @@
                     </div>
                 </div>
                 <!-- -----coupon----form-- -->
-                <div class="modal-dialog sidebar-sm" role="document">
+                <div class="modal-dialog sidebar-sm" role="document"  >
                     <div class="modal-content pt-0">
-                        <div class="mb-3 modal-header">
-                             <div class="modal-title">
+                        <div class="mb-3 modal-header" >
+                             <div class="modal-title customizer-header" >
+                                <i class="icofont-close icon-close"></i>
+              <!-- <i class="icofont-close icon-close" (click)="Customizer('')"></i> -->
+
                                  <h5 class="modal-title">Add Coupon</h5>
                              </div>
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer">
-                                     <line x1="18" y1="6" x2="6" y2="18"></line>
-                                     <line x1="6" y1="6" x2="18" y2="18"></line>
-                               </svg>
+                                 
                           </div>
                          <div class="flex-grow-1 modal-body">
                              <form id="coupan" class="" [formGroup]="couponForm" (ngSubmit)="couponSubmit()">
@@ -446,3 +450,54 @@
 <!-- --------------------- -->
 
 
+
+    <!-- <div class="nav " id="c-pills-tab"  >
+       <a href="javascript:void(0)" class="nav-link" (click)="Customizer('layout')">
+          <div class=""><i class="icon-paint-bucket"></i></div> 
+          <h1>Check layouts</h1>
+       </a>
+     </div>
+
+
+<div class="customizer-contain" [ngClass]="{'open' : customizer != '' }">
+    <div class="tab-content" id="c-pills-tabContent">
+       <div class="customizer-header">
+          <i class="icofont-close icon-close" (click)="Customizer('')"></i>
+          <h5>Preview Settings</h5>
+        </div>
+    </div>
+    </div>  -->
+
+    <!-- <div class="">
+        <div class="nav flex-column nac-pills" id="c-pills-tab" role="tablist" aria-orientation="vertical">
+            <a href="javascript:void(0)" class="nav-link"  id="c-pills-home-tab" (click)="Customizer('option')">
+                <div class=""><i class="icon-settings"></i></div>
+                <h1>Quick option</h1> 
+             </a>
+        </div>
+     </div>
+
+
+     <div class="customizer-contain" [ngClass]="{'open' : customizer != '' }">
+        <div class="tab-content" id="c-pills-tabContent">
+           <div class="customizer-header">
+              <i class="icofont-close icon-close" (click)="Customizer('')"></i>
+              <h5>Preview Settings</h5>
+     <div class="tab-pane fade" [ngClass]="{'active show': customizer == 'option' }" id="c-pills-home" role="tabpanel"
+     aria-labelledby="c-pills-home-tab">
+     <h6>Layout Type</h6>
+     <ul class="main-layout layout-grid">
+        <li data-attr="ltr" >
+           <div class="header bg-light">
+              <ul>
+                 <li></li>
+                 <li></li>
+                 <li></li>
+              </ul>
+           </div>
+           </li>
+           </ul>
+           </div>
+           </div>
+           </div>
+           </div> -->
