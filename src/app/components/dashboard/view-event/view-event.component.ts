@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { id } from '@swimlane/ngx-datatable';
@@ -29,6 +30,13 @@ export class ViewEventComponent implements OnInit {
   requestId: any;
   row: any;
   prop = [];
+  
+
+  ticket=[
+    new Title(this.view)
+
+  
+  ];
 
   columns = [
     { name: 'Title', prop: 'title' },
@@ -53,6 +61,7 @@ export class ViewEventComponent implements OnInit {
     { name: 'Action', prop: 'action' }
 
   ]
+  Eticket: any;
 
 
 
@@ -153,13 +162,13 @@ export class ViewEventComponent implements OnInit {
 // }
 
   export class view{
-    title:any;
-    descritption:any;
-    bookingStartDateTime:any;
-    bookingEndDateTime:any;
-    eventFrom:any;
-    eventTo:any;
-    shortAddress:any;
-    baseUrl:any;
+    title:string;
+    descritption:string;
+    bookingStartDateTime:string;
+    bookingEndDateTime:string;
+    eventFrom:string;
+    eventTo:string;
+    shortAddress:string;
+    baseUrl:string;
   }
 

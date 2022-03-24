@@ -9,38 +9,40 @@
     </div>
  
     <div class="card p-2" >
-        <div class="row">
+        <div class="row" *ngFor="let view of ticket">
             <div class="col-md-4">
-                <p ><b>Title:</b> </p>
+                <p ><b>Title: {{view.title}}</b> </p>
             </div>
             <div class="col-md-8">
-                <p class="ellipse-effect"><b>Discription:</b> </p>
+                <p class="ellipse-effect"><b>Discription: {{view.description}}</b> </p>
             </div>
         </div>
         <div class="row">
                 <div class="col">
-                    <p><b  >Booking Start Date:</b>
-                         <time datetime="NaN" title="Invalid date">Invalid date</time>
+                    <p><b  >Booking Start Date:{{view.bookingStartDateTime}}</b>
+                         <time datetime="NaN" title="Invalid date">Invalid date:</time>
                         </p>
                  </div>
                     <div class="col">
-                            <p><b>Event Start Date:</b>
+                            <p><b>Event Start Date:{{view.eventFrom}}</b>
                                  <time datetime="NaN" title="Invalid date">Invalid date</time>
                                 </p>
                             </div>
                             <div class="col">
-                                <p><b>Short Address: </b></p>
+                                <p><b>Short Address:{{view.shortAddress}} </b></p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p><b>Booking End Date:</b>
+                                <p><b>Booking End Date:{{view.bookingEndDateTime}}</b>
                                     <time datetime="NaN" title="Invalid date">Invalid date</time></p>
-                                </div><div class="col"><p><b>Event End Date:</b> 
+                                </div>
+                                <div class="col">
+                                    <p><b>Event End Date:{{view.eventTo}}</b> 
                                     <time datetime="NaN" title="Invalid date">Invalid date</time>
                                 </p>
                             </div>
-                            <div class="col"><p><b>Base Url:</b>
+                            <div class="col"><p><b>Base Url:{{view.baseUrl}}</b>
                                  <a href="" target="_blank"></a>
                                 </p>
                             </div>
