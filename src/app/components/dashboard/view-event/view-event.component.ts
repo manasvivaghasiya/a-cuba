@@ -17,20 +17,26 @@ import { environment } from 'src/environments/environment';
 })
 export class ViewEventComponent implements OnInit {
   public Events: any = [];
+  public Ticket: any = [];
+
   public id: string;
   // couponData = new couponData()
   // dataArray=[];
   view = new view()
-  Event :any
-  Ticket:any;
+  Event :any;
+
+
+ 
   requestID:any;
   ticketForm: FormGroup;
   couponForm: FormGroup;
   coupon: any;
+  colTicket:any;
   requestId: any;
   row: any;
   prop = [];
   public customizer: string = '';
+  public screenwidth: any = window.innerWidth;
   
 
   ticket=[
@@ -77,15 +83,18 @@ export class ViewEventComponent implements OnInit {
       this.getData(this.requestId);
     
     }
+
+  }
+ @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenwidth = event.target.innerWidth;
   }
 
-  get f() {
-    return this.ticketForm.controls;
-  }
+ 
 
   getData(requestId){
     debugger
-    this.getTicket;
+    // this.getTicket();
 
     this.http.get(`${environment.api}/events/${requestId}`)
     .subscribe((res: any) => {
@@ -93,19 +102,23 @@ export class ViewEventComponent implements OnInit {
     })
          
   }
+  get f() {
+    return this.ticketForm.controls;
+  }
 
 
   ngOnInit(): void {
-    this.getTicket;
+    this.getTicket();
+    this.getCoupon();
     
     // this.getCoupon()
     // this.dataArray.push(this.couponData);
     this.ticketForm = this.fb.group({
-      title: [''],
+      title: ['',[Validators.required]],
       description: [''],
       remark: [''],
-      amount: [''],
-      seatingCapacity: [''],
+      amount: ['',[Validators.required]],
+      seatingCapacity: ['',[Validators.required]],
       isActive: [''],
 
     });
@@ -130,35 +143,73 @@ export class ViewEventComponent implements OnInit {
 
 
  
-  couponSubmit() {
-
-  }
-
   
-  addCoupon(){
-
-  }
   // ------------------ticket-----------
+
+  edit(val) {
+    this.customizer = val;
+  
+  }
 
   ticketSubmit() {
 
   }
- getTicket(id:string){
+ getTicket(){
   // this.getData(this.requestId);
-return this.http.get(`${environment.api}/events/event${id}/EventTicket`).subscribe((res:any)=>{
-    this.Ticket =res;
+   return this.http.get(`${environment.api}/events/${this.requestId}/EventTicket`).subscribe((res:any)=>{
+     this.Ticket = res;
     // this.getData;
   });
-     
+}
+
+ submitTicket(){
+   debugger
+   this.http.patch(`${environment.api}/events/${this.requestId}/EventTicket`,this.ticketForm.value).subscribe((res:any)=>{
+     alert('data successfully add');
+    this.getTicket();
+    this.ticketForm.reset();
+   });
+   
  }
 
- submitTicket(id:string){
+ deleteTicket(id:string){
    debugger
-   this.http.post(`${environment.api}/events/${id}/EventTicket`,this.Ticket).subscribe((res:any)=>{
-     alert('data successfully add');
-    this.getTicket(id);
-   })
+   this.http.delete(`${environment.api}/events/${this.requestId}/EventTicket/${id}`)
+   .subscribe((res:any)=>{
+     alert('data successfully delete');
+     this.getTicket();
+    
+   });
  }
+
+// ------------Coupon--------------
+
+couponSubmit(){
+    
+}
+
+getCoupon(){
+  return this.http.get(`${environment.api}/events/${this.requestId}/Coupon`).subscribe((res:any)=>{
+    this.Events = res;
+  });
+}
+
+submitCoupon(){
+  debugger
+  this.http.patch(`${environment.api}/events/${this.requestId}/Coupon`,this.couponForm.value).subscribe((res:any)=>{
+    alert('data successfully add');
+   this.getCoupon();
+   this.couponForm.reset();
+  });
+}
+
+deleteCoupon(id){
+  this.http.delete(`${environment.api}/events/${this.requestId}/Coupon/${id}`)
+  .subscribe((res:any)=>{
+    alert('data successFully delete');
+    this.getCoupon();
+  })
+}
 
 
 }

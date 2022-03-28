@@ -53,6 +53,8 @@
             <div class="card">
                 <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
                     <h4 class="card-title">Event Tickets</h4>
+             <div  [ngClass]="{'open': customizer != '' }">
+                    
                     <div class="d-flex mt-md-0 mt-1"  class="nav-link" class="nav " id="c-pills-tab" >
                         <button type="button" class="ml-2 btn btn-primary "  href="javascript:void(0)" [ngClass]="{'active show': customizer == 'layout' }"(click)="Customizer('layout')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -62,6 +64,7 @@
                             <span class="align-middle ml-50">Add Ticket</span>
                         </button>
                     </div>
+                 </div>
                 </div>
                 <div class="justify-content-end mx-0 row">
                     <div class="d-flex align-items-center justify-content-end mt-1 col-sm-12 col-md-4">
@@ -84,14 +87,16 @@
                                 </svg> -->
                             </div>
                 <div class="customizer-body custom-scrollbar">
-
-                            <div [ngClass]="{'active show': customizer == 'layout' }" id="c-pills-layouts">
+                             <div class="tab-pane fade" [ngClass]="{'active show': customizer == 'layout' }" id="c-pills-layouts" role="tabpanel">
                                 <div class="flex-grow-1 modal-body" class="sidebar-type layout-grid layout-types">
                                     <form id="add_user" class="" [formGroup]="ticketForm" (ngSubmit)="ticketSubmit()">
                                         <div class="form-group" >
                                             <label for="title" class="">Title <span style="color: red; font-size: 15px;">*</span></label>
                                             <div class="input-group">
                                                 <input id="title" formControlName="title"  placeholder="Title..." name="title" type="text" class="form-control" value="">
+                                                <div *ngIf="f.title.invalid && f.title.touched" style="color: red;">
+                                                    Please Enter Title
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -125,7 +130,7 @@
                                                 <label class="custom-control-label" for="isActive"></label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="mr-1 btn btn-primary" (click)="submitTicket(id)">Submit</button>
+                                        <button type="submit" class="mr-1 btn btn-primary"  [disabled]="ticketForm.invalid" (click)="submitTicket()">Submit</button>
                                         <button type="cancle" class="btn btn-outline-secondary" (click)="Customizer('')">Cancel</button>
                                     </form>
                     
@@ -192,8 +197,8 @@
                                             <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'action'">
                                                 <ng-template let-row="row" ngx-datatable-cell-template>
                                                     {{ row[column.prop] }}
-                                                <i class="fa fa-edit mr-2" ></i>
-                                                <i class="fa fa-trash"  ></i>
+                                                <i class="fa fa-edit mr-2" href="javascript:void(0)" [ngClass]="{'active show': customizer == 'layout' }"(click)="edit('layout')"></i>
+                                                <i class="fa fa-trash" (click)="deleteTicket(row.id)"  ></i>
                                                 </ng-template>
                                             </ngx-datatable-column>
                                     
@@ -219,8 +224,8 @@
             <div class="card">
                 <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
                     <h4 class="card-title">Event coupon</h4>
-                    <div class="d-flex mt-md-0 mt-1 nav flex-column nac-pills" class="nav " id="c-pills-tab" >
-                        <button type="button" class="ml-2 btn btn-primary"  href="javascript:void(0)"  [ngClass]="{'active show': customizer == 'option' }" id="c-pills-home-tab" (click)="Customizer('option')"  >
+                    <div class="d-flex mt-md-0 mt-1 nav flex-column nac-pills"  >
+                        <button type="button" class="ml-2 btn btn-primary"    >
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -236,12 +241,12 @@
                     </div>
                 </div>
                 <!-- -----coupon----form-- -->
-                <div class="modal-dialog sidebar-sm" role="document"  >
-                    <div class="modal-content pt-0">
+                <div class="modal-dialog sidebar-sm" role="document" >
+                    <div class="modal-content pt-0" >
                         <div class="mb-3 modal-header" >
-                             <div class="modal-title customizer-header" >
+                             <div class="modal-title " >
                                 <i class="icofont-close icon-close"></i>
-              <!-- <i class="icofont-close icon-close" (click)="Customizer('')"></i> -->
+                                            <!-- <i class="icofont-close icon-close" (click)="Customizer('')"></i> -->
 
                                  <h5 class="modal-title">Add Coupon</h5>
                              </div>
@@ -249,7 +254,7 @@
                           </div>
                      <div class="customizer-body custom-scrollbar">
 
-                           <div class="flex-grow-1 modal-body">
+                           <div class="flex-grow-1 modal-body" >
                              <form id="coupan" class="" [formGroup]="couponForm" (ngSubmit)="couponSubmit()">
                                  <div class="form-group">
                                      <input type="hidden" class="form-control" value="">
@@ -315,7 +320,7 @@
                                              <label class="custom-control-label" for="isValid"></label>
                                          </div>
                                      </div>
-                                     <button type="button" class="mr-1 btn btn-primary" (click)="addCoupon()">Submit</button>
+                                     <button type="button" class="mr-1 btn btn-primary" (click)="submitCoupon()">Submit</button>
                                      <button type="cancle" class="btn btn-outline-secondary" (click)="Customizer('')">Cancel</button>
 
                                  </form>
@@ -343,7 +348,7 @@
                                     <ngx-datatable class="bootstrap" [rows]="Events" [columns]="coupons" 
                                         [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
                                         [limit]="5">
-                                        <ng-container *ngFor="let column of coupon">
+                                        <ng-container *ngFor="let column of coupons">
                                            <div >
                                             <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'couponCode'">
                                                 <ng-template let-row="row" ngx-datatable-cell-template >
@@ -385,8 +390,8 @@
                                             <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'action'">
                                                 <ng-template let-row="row" ngx-datatable-cell-template >
                                                     {{ row[column.prop] }}
-                                                <i class="fa fa-edit mr-2" ></i>
-                                                <i class="fa fa-trash"  ></i>
+                                                    <i class="fa fa-edit mr-2"></i>
+                                                    <i class="fa fa-trash" ></i>
                                                 </ng-template>
                                             </ngx-datatable-column>
                                            </div>
@@ -472,11 +477,12 @@
        <div class="customizer-header">
           <i class="icofont-close icon-close" (click)="Customizer('')"></i>
           <h5>Preview Settings</h5>
+          
         </div>
     </div>
-    </div>  -->
+    </div> 
 
-    <!-- <div class="">
+    <div class="">
         <div class="nav flex-column nac-pills" id="c-pills-tab" role="tablist" aria-orientation="vertical">
             <a href="javascript:void(0)" class="nav-link"  id="c-pills-home-tab" (click)="Customizer('option')">
                 <div class=""><i class="icon-settings"></i></div>
