@@ -61,14 +61,15 @@ export class ViewEventComponent implements OnInit {
     { name: 'Discount', prop: 'discountPercentage' },
     { name: 'Valid Form', prop: 'validFrom' },
     { name: 'Valid To', prop: 'validTo' },
-    { name: 'Amount', prop: 'minDiscountAmount' },
-    { name: 'Min Booking Amount', prop: 'maxDiscountAmount' },
+    { name: 'Min Booking Amount', prop: 'minDiscountAmount' },
     { name: 'Max Discoount Amount', prop: 'maxDiscountAmount' },
     { name: 'Is valid', prop: 'isValid' },
     { name: 'Action', prop: 'action' }
 
   ]
   Eticket: any;
+  editCouponInfo: any;
+  eventCoupon: any;
 
 
 
@@ -194,8 +195,26 @@ getCoupon(){
   });
 }
 
-submitCoupon(){
+updateCoupon(id){
+
+  this.http.patch(`${environment.api}/events/${this.requestId}/Coupon/${id}`,
+  this.editCouponInfo,
+  
+  this.couponForm.value)
+  .subscribe((res:any)=>{
+    alert('data successfully update');
+    this.getCoupon();
+    this.couponForm.reset();
+  })
+
+}
+
+submitCoupon(id){
   debugger
+  // if(this.editCouponInfo){
+  //   this.updateCoupon(id)
+  //   return
+  // }
   this.http.patch(`${environment.api}/events/${this.requestId}/Coupon`,this.couponForm.value).subscribe((res:any)=>{
     alert('data successfully add');
    this.getCoupon();
@@ -208,6 +227,20 @@ deleteCoupon(id){
   .subscribe((res:any)=>{
     alert('data successFully delete');
     this.getCoupon();
+  });
+}
+
+editCoupon(eventCoupon:any){
+  debugger
+  this.editCouponInfo = eventCoupon
+  this.eventCoupon.patchValue({
+    couponCode:eventCoupon. couponCode,
+    discountPercentage:eventCoupon. discountPercentage,
+    validFrom:eventCoupon. validFrom,
+    validTo:eventCoupon. validTo,
+    minDiscountAmount:eventCoupon. minDiscountAmount,
+    isValid:eventCoupon. isValid,
+
   })
 }
 
