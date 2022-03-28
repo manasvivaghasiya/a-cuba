@@ -45,8 +45,7 @@ export class ViewEventComponent implements OnInit {
     { name: 'Description', prop: 'description' },
     { name: 'Remark', prop: 'remark' },
     { name: 'Amount', prop: 'amount' },
-    { name: 'Seating Capacity', prop: 'amount' },
-    { name: 'Event To', prop: 'seatingCapacity' },
+    { name: 'Seating Capacity', prop: 'seatingCapacity' },
     { name: 'is Active', prop: 'isActive' },
     { name: 'Action', prop: 'action' }
   ]
@@ -86,6 +85,8 @@ export class ViewEventComponent implements OnInit {
 
   getData(requestId){
     debugger
+    this.getTicket;
+
     this.http.get(`${environment.api}/events/${requestId}`)
     .subscribe((res: any) => {
       this.view = res;
@@ -119,12 +120,16 @@ export class ViewEventComponent implements OnInit {
       isValid:['']
     })
   }
-
+  Customizer(val) {
+    this.customizer = val;
   
-
-  ticketSubmit() {
-
   }
+  getToken(): string {
+    return localStorage.getItem('token')
+  }
+
+
+ 
   couponSubmit() {
 
   }
@@ -135,28 +140,27 @@ export class ViewEventComponent implements OnInit {
   }
   // ------------------ticket-----------
 
- getTicket(id:string){
-  // this.getData;
+  ticketSubmit() {
 
-  this.http.get(`${environment.api}/events/${id}/EventTicket`).subscribe((res:any)=>{
+  }
+ getTicket(id:string){
+  // this.getData(this.requestId);
+return this.http.get(`${environment.api}/events/event${id}/EventTicket`).subscribe((res:any)=>{
     this.Ticket =res;
-    this.getData;
+    // this.getData;
   });
      
  }
 
  submitTicket(id:string){
    debugger
-   this.http.patch(`${environment.api}/events/${id}/EventTicket`,this.Ticket).subscribe((res:any)=>{
+   this.http.post(`${environment.api}/events/${id}/EventTicket`,this.Ticket).subscribe((res:any)=>{
      alert('data successfully add');
     this.getTicket(id);
    })
  }
 
- Customizer(val) {
-  this.customizer = val;
 
-}
 }
 // export class couponData{
 //   couponCode:string;

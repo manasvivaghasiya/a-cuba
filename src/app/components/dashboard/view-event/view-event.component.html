@@ -54,7 +54,7 @@
                 <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
                     <h4 class="card-title">Event Tickets</h4>
                     <div class="d-flex mt-md-0 mt-1"  class="nav-link" class="nav " id="c-pills-tab" >
-                        <button type="button" class="ml-2 btn btn-primary "  href="javascript:void(0)"(click)="Customizer('layout')">
+                        <button type="button" class="ml-2 btn btn-primary "  href="javascript:void(0)" [ngClass]="{'active show': customizer == 'layout' }"(click)="Customizer('layout')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -71,67 +71,71 @@
                     
                 </div>
                 <!-- --------ticket-form-------- -->
-                <div class="modal-dialog sidebar-sm" role="document"  class="customizer-contain" [ngClass]="{'open' : customizer != '' }">
-                    <div class="modal-content pt-0">
-                        <div class="mb-3 modal-header tab-content " id="c-pills-tabContent">
-                            <div class="modal-title customizer-header">
-                                <i class="icofont-close icon-close" (click)="Customizer('')"></i>
-                                <h5 class="modal-title">Add Ticket</h5>
+                    <div class="modal-dialog sidebar-sm" role="document"  class="customizer-contain" [ngClass]="{'open' : customizer != '' }">
+                        <div class="modal-content pt-0">
+                            <div class="mb-3 modal-header tab-content " id="c-pills-tabContent">
+                                <div class="modal-title customizer-header">
+                                    <i class="icofont-close icon-close" (click)="Customizer('')"></i>
+                                    <h5 class="modal-title">Add Ticket</h5>
+                                </div>
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg> -->
                             </div>
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg> -->
+                <div class="customizer-body custom-scrollbar">
+
+                            <div [ngClass]="{'active show': customizer == 'layout' }" id="c-pills-layouts">
+                                <div class="flex-grow-1 modal-body" class="sidebar-type layout-grid layout-types">
+                                    <form id="add_user" class="" [formGroup]="ticketForm" (ngSubmit)="ticketSubmit()">
+                                        <div class="form-group" >
+                                            <label for="title" class="">Title <span style="color: red; font-size: 15px;">*</span></label>
+                                            <div class="input-group">
+                                                <input id="title" formControlName="title"  placeholder="Title..." name="title" type="text" class="form-control" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description" class="">Description</label>
+                                            <div class="input-group">
+                                                <input id="description" formControlName="description" placeholder="Description..." name="description" type="text" class="form-control" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="remark" class="">Remark</label>
+                                            <div class="input-group">
+                                                <input id="remark"   formControlName="remark" placeholder="Remark..." name="remark" type="text" class="form-control" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="amount" class="">Amount <span style="color: red; font-size: 15px;">*</span></label>
+                                            <div class="input-group">
+                                                <input id="amount"   formControlName="amount" placeholder="Amount..." name="amount" min="0" type="number" class="form-control" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="seatingCapacity" class="">Seating Capacity <span style="color: red; font-size: 15px;">*</span></label>
+                                            <div class="input-group">
+                                                <input id="seatingCapacity"  formControlName="seatingCapacity" placeholder="Seating Capacity..." min="0" name="seatingCapacity" type="number" class="form-control" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="isActive" class="">Is Active</label>
+                                            <div class="mb-1 custom-checkbox custom-control">
+                                                <input type="checkbox"  formControlName="isActive"  id="isActive" name="isActive" class="custom-control-input">
+                                                <label class="custom-control-label" for="isActive"></label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="mr-1 btn btn-primary" (click)="submitTicket(id)">Submit</button>
+                                        <button type="cancle" class="btn btn-outline-secondary" (click)="Customizer('')">Cancel</button>
+                                    </form>
+                    
+                                </div>
+                            </div>
+                </div>
+                            
                         </div>
-                        <div [ngClass]="{'active show': customizer == 'layout' }" id="c-pills-layouts">
-                            <div class="flex-grow-1 modal-body">
-                                <form id="add_user" class="" [formGroup]="ticketForm" (ngSubmit)="ticketSubmit()">
-                                    <div class="form-group">
-                                        <label for="title" class="">Title <span style="color: red; font-size: 15px;">*</span></label>
-                                        <div class="input-group">
-                                            <input id="title" formControlName="title"  placeholder="Title..." name="title" type="text" class="form-control" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description" class="">Description</label>
-                                        <div class="input-group">
-                                            <input id="description" formControlName="description" placeholder="Description..." name="description" type="text" class="form-control" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="remark" class="">Remark</label>
-                                        <div class="input-group">
-                                            <input id="remark"   formControlName="remark" placeholder="Remark..." name="remark" type="text" class="form-control" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="amount" class="">Amount <span style="color: red; font-size: 15px;">*</span></label>
-                                        <div class="input-group">
-                                            <input id="amount"   formControlName="amount" placeholder="Amount..." name="amount" min="0" type="number" class="form-control" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="seatingCapacity" class="">Seating Capacity <span style="color: red; font-size: 15px;">*</span></label>
-                                        <div class="input-group">
-                                            <input id="seatingCapacity"  formControlName="seatingCapacity" placeholder="Seating Capacity..." min="0" name="seatingCapacity" type="number" class="form-control" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="isActive" class="">Is Active</label>
-                                        <div class="mb-1 custom-checkbox custom-control">
-                                            <input type="checkbox"  formControlName="isActive"  id="isActive" name="isActive" class="custom-control-input">
-                                            <label class="custom-control-label" for="isActive"></label>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="mr-1 btn btn-primary" (click)="submitTicket(id)">Submit</button>
-                                    <button type="button" class="btn btn-outline-secondary">Cancel</button>
-                                </form>
+                    </div> 
                 
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div> 
                           
                 <!-- ----ticket-table------ -->
                 <div class="container-fluid">
@@ -215,8 +219,8 @@
             <div class="card">
                 <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
                     <h4 class="card-title">Event coupon</h4>
-                    <div class="d-flex mt-md-0 mt-1 nav flex-column nac-pills">
-                        <button type="button" class="ml-2 btn btn-primary"  >
+                    <div class="d-flex mt-md-0 mt-1 nav flex-column nac-pills" class="nav " id="c-pills-tab" >
+                        <button type="button" class="ml-2 btn btn-primary"  href="javascript:void(0)"  [ngClass]="{'active show': customizer == 'option' }" id="c-pills-home-tab" (click)="Customizer('option')"  >
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -243,7 +247,9 @@
                              </div>
                                  
                           </div>
-                         <div class="flex-grow-1 modal-body">
+                     <div class="customizer-body custom-scrollbar">
+
+                           <div class="flex-grow-1 modal-body">
                              <form id="coupan" class="" [formGroup]="couponForm" (ngSubmit)="couponSubmit()">
                                  <div class="form-group">
                                      <input type="hidden" class="form-control" value="">
@@ -310,11 +316,13 @@
                                          </div>
                                      </div>
                                      <button type="button" class="mr-1 btn btn-primary" (click)="addCoupon()">Submit</button>
-                                     <button type="button" class="btn btn-outline-secondary">Cancel</button>
+                                     <button type="cancle" class="btn btn-outline-secondary" (click)="Customizer('')">Cancel</button>
+
                                  </form>
-                             </div>
-                         </div>
-                     </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
              
                 <!-- -------coupon-table----- -->
                 <div class="container-fluid">

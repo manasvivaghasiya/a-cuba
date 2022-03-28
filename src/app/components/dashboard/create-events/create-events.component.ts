@@ -37,7 +37,6 @@ export class CreateEventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     this.dataArray.push(this.banner);
 
     this.EventDataForm = this.fb.group({
       baseUrl: [''],
@@ -66,7 +65,9 @@ export class CreateEventsComponent implements OnInit {
       paypalMode: [''],
       remark: [''],
       id: ['']
-    })
+    });
+    this.dataArray.push(this.banner);
+
 
   }
 
