@@ -130,7 +130,7 @@
                                                 <label class="custom-control-label" for="isActive"></label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="mr-1 btn btn-primary"  [disabled]="ticketForm.invalid"  (click)="submitTicket()">Submit</button>
+                                        <button type="submit" class="mr-1 btn btn-primary"  [disabled]="ticketForm.invalid"  (click)="submitTicket();Customizer('')">Submit</button>
                                         <button type="cancle" class="btn btn-outline-secondary" (click)="Customizer('')">Cancel</button>
                                     </form>
                     
@@ -245,10 +245,11 @@
                     <div class="modal-content pt-0" >
                         <div class="mb-3 modal-header" >
                              <div class="modal-title " >
-                                <i class="icofont-close icon-close"></i>
-                                            <!-- <i class="icofont-close icon-close" (click)="Customizer('')"></i> -->
+                                <!-- <i class="icofont-close icon-close"></i> -->
+                                <!-- <i class="icofont-close icon-close" (click)="Customizer('')"></i> -->
 
                                  <h5 class="modal-title">Add Coupon</h5>
+
                              </div>
                                  
                           </div>
@@ -391,7 +392,7 @@
                                             <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'action'">
                                                 <ng-template let-row="row" ngx-datatable-cell-template>
                                                     {{ row[column.prop] }}
-                                                <i class="fa fa-edit mr-2" (click)="editCoupon(row)"></i>
+                                                <i class="fa fa-edit mr-2" (click)="editCoupon(eventCoupon)"></i>
                                                 <i class="fa fa-trash" (click)="deleteCoupon(row.id)"  ></i>
                                                 </ng-template>
                                             </ngx-datatable-column>

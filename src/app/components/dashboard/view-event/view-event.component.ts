@@ -230,22 +230,23 @@ deleteCoupon(id){
   });
 }
 
-editCoupon(eventCoupon:any){
-  debugger
-  this.editCouponInfo = eventCoupon
-  this.eventCoupon.patchValue({
-    couponCode:eventCoupon. couponCode,
-    discountPercentage:eventCoupon. discountPercentage,
-    validFrom:eventCoupon. validFrom,
-    validTo:eventCoupon. validTo,
-    minDiscountAmount:eventCoupon. minDiscountAmount,
-    isValid:eventCoupon. isValid,
+// editCoupon(eventCoupon:any){
+//   debugger
+//   this.editCouponInfo = this.couponForm.value
+//   this.couponForm = eventCoupon;
+//   this.eventCoupon.patchValue({
+//     couponCode:eventCoupon. couponCode,
+//     discountPercentage:eventCoupon. discountPercentage,
+//     validFrom:eventCoupon. validFrom,
+//     validTo:eventCoupon. validTo,
+//     minDiscountAmount:eventCoupon. minDiscountAmount,
+//     isValid:eventCoupon. isValid,
 
-  })
+//   });
+// }
 }
 
 
-}
 // export class couponData{
 //   couponCode:string;
 //   discountPercentage:string;
