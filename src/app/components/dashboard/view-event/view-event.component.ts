@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { ThisReceiver, ThrowStmt } from '@angular/compiler';
+import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { id } from '@swimlane/ngx-datatable';
 import { LayoutService } from 'src/app/shared/services/layout.service';
+
 import { environment } from 'src/environments/environment';
 
 
@@ -70,13 +72,18 @@ export class ViewEventComponent implements OnInit {
   Eticket: any;
   editCouponInfo: any;
   eventCoupon: any;
-
+  editInfo: any;
+  data: any;
+  currentUserId: any;
+  ticketID: any;
+  couponId: any;
 
 
   constructor(
     private fb: FormBuilder,
     private routes: ActivatedRoute,
-    private http:HttpClient
+    private http:HttpClient,
+    private changeDetector : ChangeDetectorRef
   ) 
   {
     this.requestId = this.routes.snapshot.paramMap.get('id');
@@ -105,6 +112,12 @@ export class ViewEventComponent implements OnInit {
   }
   get f() {
     return this.ticketForm.controls;
+
+  }
+
+  get ff(){
+    return this.couponForm.controls;
+
   }
 
 
@@ -125,8 +138,8 @@ export class ViewEventComponent implements OnInit {
     });
 
     this.couponForm = this.fb.group({
-      couponCode:[''],
-      discountPercentage:[''],
+      couponCode:['',[Validators.required]],
+      discountPercentage:['',[Validators.required]],
       validFrom:[''],
       validTo:[''],
       minDiscountAmount:[''],
@@ -147,10 +160,7 @@ export class ViewEventComponent implements OnInit {
   
   // ------------------ticket-----------
 
-  edit(val) {
-    this.customizer = val;
-  
-  }
+
 
   ticketSubmit() {
 
@@ -159,12 +169,64 @@ export class ViewEventComponent implements OnInit {
   // this.getData(this.requestId);
    return this.http.get(`${environment.api}/events/${this.requestId}/EventTicket`).subscribe((res:any)=>{
      this.Ticket = res;
+     this.changeDetector.detectChanges();
     // this.getData;
   });
 }
 
+edit(val,data) {
+ 
+  this.customizer = val;
+  // this.ticketForm = data;
+  // this.data= this.editInfo;
+  // this.editInfo= data;
+  this.ticketID= data.id;
+
+  this.ticketForm.get('title').setValue(data.title);
+  this.ticketForm.get('description').setValue(data.description);
+  this.ticketForm.get('remark').setValue(data.remark);
+  this.ticketForm.get('amount').setValue(data.amount);
+  this.ticketForm.get('seatingCapacity').setValue(data.seatingCapacity);
+  this.ticketForm.get('isActive').setValue(data.isActive);
+}
+
+updateTicket(id){
+  debugger
+
+  const data = 
+    {
+      title:  this.ticketForm.value.title,
+      description:  this.ticketForm.value.description,
+      remark:  this.ticketForm.value.remark,
+      amount:  this.ticketForm.value.amount,
+      seatingCapacity:  this.ticketForm.value.seatingCapacity,
+      isActive:  this.ticketForm.value.isActive
+    
+  }
+  this.http.patch(`${environment.api}/events/${this.requestId}/EventTicket/${id}`,
+  data)
+  .subscribe((res:any)=>{
+    alert('data successfully update');
+    this.ticketForm.reset();
+
+    this.getTicket();
+  })
+}
+
+// if(this.currentUserId){
+//   this.updateTicket(this.currentUserId);
+//   return
+// }
  submitTicket(){
    debugger
+  if(this.ticketID){
+   this.updateTicket(this.ticketID);
+  //  this.ticketForm = this.ticketID;
+
+  return
+}
+
+   this.ticketForm.value.seatingCapacity = this.ticketForm.value.seatingCapacity.toString();
    this.http.patch(`${environment.api}/events/${this.requestId}/EventTicket`,this.ticketForm.value).subscribe((res:any)=>{
      alert('data successfully add');
     this.getTicket();
@@ -197,10 +259,18 @@ getCoupon(){
 
 updateCoupon(id){
 
+  const data ={
+    couponCode: this.couponForm.value.couponCode,
+    discountPercentage: this.couponForm.value.discountPercentage,
+    validFrom: this.couponForm.value.validFrom,
+    validTo: this.couponForm.value.validTo,
+    minDiscountAmount: this.couponForm.value.minDiscountAmount,
+    maxDiscountAmount:this.couponForm.value.maxDiscountAmount,
+    isValid:this.couponForm.value.isValid
+  }
+
   this.http.patch(`${environment.api}/events/${this.requestId}/Coupon/${id}`,
-  this.editCouponInfo,
-  
-  this.couponForm.value)
+  data)
   .subscribe((res:any)=>{
     alert('data successfully update');
     this.getCoupon();
@@ -211,10 +281,10 @@ updateCoupon(id){
 
 submitCoupon(id){
   debugger
-  // if(this.editCouponInfo){
-  //   this.updateCoupon(id)
-  //   return
-  // }
+  if(  this.couponId){
+    this.updateCoupon(this.couponId)
+    return
+  }
   this.http.patch(`${environment.api}/events/${this.requestId}/Coupon`,this.couponForm.value).subscribe((res:any)=>{
     alert('data successfully add');
    this.getCoupon();
@@ -223,6 +293,7 @@ submitCoupon(id){
 }
 
 deleteCoupon(id){
+  debugger
   this.http.delete(`${environment.api}/events/${this.requestId}/Coupon/${id}`)
   .subscribe((res:any)=>{
     alert('data successFully delete');
@@ -230,20 +301,26 @@ deleteCoupon(id){
   });
 }
 
-// editCoupon(eventCoupon:any){
-//   debugger
-//   this.editCouponInfo = this.couponForm.value
-//   this.couponForm = eventCoupon;
-//   this.eventCoupon.patchValue({
-//     couponCode:eventCoupon. couponCode,
-//     discountPercentage:eventCoupon. discountPercentage,
-//     validFrom:eventCoupon. validFrom,
-//     validTo:eventCoupon. validTo,
-//     minDiscountAmount:eventCoupon. minDiscountAmount,
-//     isValid:eventCoupon. isValid,
 
-//   });
-// }
+
+editCoupon(data){
+  debugger
+  // this.customizer = val;
+  this.couponId= data.id;
+
+  this.couponForm.get ('couponCode').setValue(data.couponCode);
+  this.couponForm.get ('discountPercentage').setValue(data.discountPercentage);
+  this.couponForm.get ('validFrom').setValue(data.validFrom);
+  this.couponForm.get ('validTo').setValue(data.validTo);
+  this.couponForm.get ('minDiscountAmount').setValue(data.minDiscountAmount);
+  this.couponForm.get ('maxDiscountAmount').setValue(data.maxDiscountAmount);
+  this.couponForm.get ('isValid').setValue(data.isValid);
+  // this.couponForm.get ('action').setValue(data.action);
+
+
+
+}
+
 }
 
 

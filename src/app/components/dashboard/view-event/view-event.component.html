@@ -115,6 +115,9 @@
                                             <label for="amount" class="">Amount <span style="color: red; font-size: 15px;">*</span></label>
                                             <div class="input-group">
                                                 <input id="amount"   formControlName="amount" placeholder="Amount..." name="amount" min="0" type="number" class="form-control" value="">
+                                                <div *ngIf="f.amount.invalid && f.amount.touched" style="color: red;">
+                                                    
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -197,7 +200,7 @@
                                             <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'action'">
                                                 <ng-template let-row="row" ngx-datatable-cell-template>
                                                     {{ row[column.prop] }}
-                                                <i class="fa fa-edit mr-2" href="javascript:void(0)" [ngClass]="{'active show': customizer == 'layout' }"(click)="edit('layout')"></i>
+                                                <i class="fa fa-edit mr-2" href="javascript:void(0)" [ngClass]="{'active show': customizer == 'layout' }" (click)="edit('layout',row)"></i>
                                                 <i class="fa fa-trash" (click)="deleteTicket(row.id)"  ></i>
                                                 </ng-template>
                                             </ngx-datatable-column>
@@ -225,7 +228,7 @@
                 <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
                     <h4 class="card-title">Event coupon</h4>
                     <div class="d-flex mt-md-0 mt-1 nav flex-column nac-pills"  >
-                        <button type="button" class="ml-2 btn btn-primary"    >
+                        <button type="button" class="ml-2 btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -262,13 +265,19 @@
                                      <label for="couponCode" class="">Coupon Code <span style="color: red; font-size: 15px;">*</span>
                                      </label><div class="input-group">
                                          <input id="couponCode"formControlName="couponCode" placeholder="Coupon Code..." name="couponCode" type="text" class="form-control" value="">
-                                     </div>
+                                         <div *ngIf="ff.couponCode.invalid && ff.couponCode.touched" style="color: red;">
+                                                    
+                                        </div>
+                                        </div>
                                  </div>
                                  <div class="form-group">
                                      <label for="discountPercentage" class="">Discount (%) <span style="color: red; font-size: 15px;">*</span></label>
                                      <div class="input-group">
                                          <input id="discountPercentage" formControlName="discountPercentage" placeholder="Discount (%)..." min="0" name="discountPercentage" type="number" class="form-control" value="">
-                                     </div>
+                                         <div *ngIf="ff.discountPercentage.invalid && ff.discountPercentage.touched" style="color: red;">
+                                                    
+                                        </div>
+                                        </div>
                                  </div>
                                  <div class="form-group">
                                      <label for="validFrom" class="">Valid From Date <span style="color: red; font-size: 15px;">*</span></label>
@@ -321,7 +330,7 @@
                                              <label class="custom-control-label" for="isValid"></label>
                                          </div>
                                      </div>
-                                     <button type="button" class="mr-1 btn btn-primary" (click)="submitCoupon(id)">Submit</button>
+                                     <button type="button" class="mr-1 btn btn-primary"  [disabled]="couponForm.invalid"  (click)="submitCoupon(id);Customizer('')">Submit</button>
                                      <button type="cancle" class="btn btn-outline-secondary" (click)="Customizer('')">Cancel</button>
 
                                  </form>
@@ -337,8 +346,7 @@
                             <div class="card">
                                 <div class="card-body custom-datatable">
                                     <div class="row">
-                                       
-                                        <div class="col-md-2 pb-3">
+                                       <div class="col-md-2 pb-3">
                                             <div>
                                                 <div class="d-flex mt-md-0 mt-1">
                                                     
@@ -392,7 +400,7 @@
                                             <ngx-datatable-column name="{{ column.name }}" *ngIf="column.prop === 'action'">
                                                 <ng-template let-row="row" ngx-datatable-cell-template>
                                                     {{ row[column.prop] }}
-                                                <i class="fa fa-edit mr-2" (click)="editCoupon(eventCoupon)"></i>
+                                                <i class="fa fa-edit mr-2" (click)="editCoupon(row)"></i>
                                                 <i class="fa fa-trash" (click)="deleteCoupon(row.id)"  ></i>
                                                 </ng-template>
                                             </ngx-datatable-column>
