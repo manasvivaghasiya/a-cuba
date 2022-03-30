@@ -20,15 +20,23 @@ import { environment } from 'src/environments/environment';
 export class ViewEventComponent implements OnInit {
   public Events: any = [];
   public Ticket: any = [];
-
+  public customizer: string = '';
+  public screenwidth: any = window.innerWidth;
   public id: string;
-  // couponData = new couponData()
-  // dataArray=[];
+
   view = new view()
   Event :any;
 
 
- 
+  Eticket: any;
+  editCouponInfo: any;
+  eventCoupon: any;
+  editInfo: any;
+  data: any;
+  currentUserId: any;
+  ticketID: any;
+  couponId: any;
+
   requestID:any;
   ticketForm: FormGroup;
   couponForm: FormGroup;
@@ -37,8 +45,7 @@ export class ViewEventComponent implements OnInit {
   requestId: any;
   row: any;
   prop = [];
-  public customizer: string = '';
-  public screenwidth: any = window.innerWidth;
+
   
 
   ticket=[
@@ -69,15 +76,8 @@ export class ViewEventComponent implements OnInit {
     { name: 'Action', prop: 'action' }
 
   ]
-  Eticket: any;
-  editCouponInfo: any;
-  eventCoupon: any;
-  editInfo: any;
-  data: any;
-  currentUserId: any;
-  ticketID: any;
-  couponId: any;
-
+ 
+  
 
   constructor(
     private fb: FormBuilder,
@@ -93,6 +93,7 @@ export class ViewEventComponent implements OnInit {
     }
 
   }
+  
  @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenwidth = event.target.innerWidth;
@@ -149,8 +150,10 @@ export class ViewEventComponent implements OnInit {
   }
   Customizer(val) {
     this.customizer = val;
-  
-  }
+    
+   }
+
+ 
   getToken(): string {
     return localStorage.getItem('token')
   }
@@ -195,14 +198,15 @@ updateTicket(id){
 
   const data = 
     {
-      title:  this.ticketForm.value.title,
-      description:  this.ticketForm.value.description,
-      remark:  this.ticketForm.value.remark,
-      amount:  this.ticketForm.value.amount,
-      seatingCapacity:  this.ticketForm.value.seatingCapacity,
-      isActive:  this.ticketForm.value.isActive
+      title:this.ticketForm.value.title,
+      description:this.ticketForm.value.description,
+      remark:this.ticketForm.value.remark,
+      amount:this.ticketForm.value.amount,
+      seatingCapacity:this.ticketForm.value.seatingCapacity.toString(),
+      isActive:this.ticketForm.value.isActive
     
   }
+  this.ticketForm.value.seatingCapacity = this.ticketForm.value.seatingCapacity.toString();
   this.http.patch(`${environment.api}/events/${this.requestId}/EventTicket/${id}`,
   data)
   .subscribe((res:any)=>{
@@ -256,6 +260,8 @@ getCoupon(){
     this.Events = res;
   });
 }
+
+
 
 updateCoupon(id){
 
