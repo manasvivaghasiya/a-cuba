@@ -279,7 +279,7 @@ updateCoupon(id){
 
 }
 
-submitCoupon(id){
+submitCoupon(){
   debugger
   if(  this.couponId){
     this.updateCoupon(this.couponId)
