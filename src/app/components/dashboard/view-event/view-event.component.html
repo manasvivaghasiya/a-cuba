@@ -228,8 +228,8 @@
                 <div class="flex-md-row flex-column align-md-items-center align-items-start border-bottom card-header">
                     <h4 class="card-title">Event coupon</h4>
                    
-                        <div class="d-flex mt-md-0 mt-1 nav flex-column nac-pills"  id="c-pills-tab" >
-                        <button type="button" class="ml-2 btn btn-primary">
+                        <div class="d-flex mt-md-0 mt-1 nav flex-column nac-pills"  id="c-pills-tab" role="tablist" aria-orientation="vertical" >
+                        <button type="button" class="ml-2 btn btn-primary" href="javascript:void(0)"  [ngClass]="{'active show': customizer == 'option' }" id="c-pills-home-tab" (click)="Customizer('option')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -246,10 +246,11 @@
                     </div>
                 </div>
                 <!-- -----coupon----form-- -->
-                <div class="modal-dialog sidebar-sm" role="document"   >
-                    <div class="modal-content pt-0">
-                        <div class="mb-3 modal-header"  >
-                             <div class="modal-title ">
+                <div class="modal-dialog sidebar-sm" role="document"  [ngClass]="{'open' : customizer != '' }"  >
+                    <div class="modal-content pt-0"  [ngClass]="{'active show': customizer == 'option' }" id="c-pills-home" role="tabpanel"
+                    aria-labelledby="c-pills-home-tab">
+                        <div class="mb-3 modal-header tab-content" id="c-pills-tabContent"  >
+                             <div class="modal-title customizer-header">
                                 <!-- <i class="icofont-close icon-close"></i> -->
                                 <i class="icofont-close icon-close" (click)="Customizer('')"></i>
                                  <h5 class="modal-title">Add Coupon</h5>
